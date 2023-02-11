@@ -170,6 +170,7 @@ const Entry = ({ type }) => {
                         if (data.first_name) {
                           setName(data.first_name);
                           navigate('/login');
+                          console.log(data);
                         } else {
                           setmessage('Error');
                         }

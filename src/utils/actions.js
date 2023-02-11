@@ -16,7 +16,7 @@ export const loginAction = async data => {
 
 export const signupAction = async data => {
   return await axios
-    .post(`${BASEURL}auth/signup`, data, {
+    .post(`${BASEURL}auth/signup/`, data, {
       auth: {
         username: 'admin',
         password: 'admin',
