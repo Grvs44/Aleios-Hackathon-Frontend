@@ -2,11 +2,16 @@ import axios from 'axios';
 const BASEURL = 'https://sustainabilityoncampus.eu.pythonanywhere.com/';
 
 export const loginAction = async data => {
+  const body = {
+    username: data.email,
+    password: data.password,
+  };
+
   return await axios
-    .post(`${BASEURL}auth/login/`, data, {
+    .post(`${BASEURL}auth/login/`, body, {
       auth: {
-        username: 'admin',
-        password: 'admin',
+        password: 'sustainabilityoncampus',
+        username: 'adminadmin',
       },
     })
     .then(response => {
@@ -15,16 +20,20 @@ export const loginAction = async data => {
 };
 
 export const signupAction = async data => {
+  const first = data.fullName.split(' ')[0];
+  const body = {
+    username: data.email,
+    password: data.password,
+    first_name: first.substring(0, 1).toUpperCase() + first.substring(1),
+  };
+  console.log(body);
   return await axios
-    .post(`${BASEURL}auth/signup/`, data, {
-      auth: {
-        username: 'admin',
-        password: 'admin',
-      },
-    })
+    .post(`${BASEURL}auth/signup/`, body)
     .then(response => {
+      console.log(response);
       return response.data;
-    });
+    })
+    .catch(data => console.log(data));
 };
 
 export const getCode = async data => {

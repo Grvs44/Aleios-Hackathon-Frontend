@@ -10,7 +10,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { Navigate, redirect } from 'react-router-dom';
-import { getUser } from '../utils/actions';
+import { getName, getUser } from '../utils/actions';
 import Navbar from '../elements/components/Navbar';
 import Menu from '../elements/components/Menu';
 function Dashboard() {
@@ -18,7 +18,7 @@ function Dashboard() {
   // let navigate = useNavigate();
   const bg = useColorModeValue('gray.100', 'gray.900');
 
-  const user = getUser();
+  const user = getName();
   if (!user) {
     return <Navigate to={'/login'} />;
   }

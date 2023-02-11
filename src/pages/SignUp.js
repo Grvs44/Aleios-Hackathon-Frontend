@@ -158,6 +158,7 @@ const Entry = ({ type }) => {
                       loginAction(form).then(data => {
                         if (data.token) {
                           setToken(data.token);
+                          setName(data.first_name);
                           setUser(form.email);
                           navigate('/dashboard');
                         } else {
@@ -168,9 +169,7 @@ const Entry = ({ type }) => {
                   : () => {
                       signupAction(form).then(data => {
                         if (data.first_name) {
-                          setName(data.first_name);
                           navigate('/login');
-                          console.log(data);
                         } else {
                           setmessage('Error');
                         }
