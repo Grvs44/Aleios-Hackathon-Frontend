@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, SimpleGrid } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { removeToken, removeUser } from '../../utils/actions';
+import { removeName, removeToken, removeUser } from '../../utils/actions';
 
 const Menu = () => {
   const navigate = useNavigate();
@@ -123,7 +123,7 @@ const Menu = () => {
         onClick={() => {
           removeUser();
           removeToken();
-
+          removeName();
           navigate('/');
         }}
       >

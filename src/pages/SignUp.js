@@ -15,9 +15,15 @@ import {
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../elements/components/ColorModeSwitcher';
 import { useNavigate, Navigate } from 'react-router-dom';
-import { setUser, loginAction, setToken, getUser } from '../utils/actions';
+import {
+  setUser,
+  loginAction,
+  signupAction,
+  setToken,
+  getUser,
+  setName,
+} from '../utils/actions';
 import logo from '../elements/assets/favicon.ico';
-import 'transition-style';
 
 const Entry = ({ type }) => {
   // const [isLaptopSize] = useMediaQuery(['(min-width: 1023px)']);
@@ -26,7 +32,8 @@ const Entry = ({ type }) => {
 
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '', fullName: '' });
-  var validRegex = /^(?=^[^_]+_?[^_]+$)\w{3,20}$/;
+  var validRegex =
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   const validateForm = () => {
     return form.password.length >= 6 && form.email.match(validRegex);
@@ -72,7 +79,7 @@ const Entry = ({ type }) => {
                   rounded={'none'}
                   maxW="300px"
                   placeholder="John Doe"
-                  name="email"
+                  name="fullName"
                   autoComplete={'false'}
                   onChange={handleChange}
                 />
@@ -158,7 +165,16 @@ const Entry = ({ type }) => {
                         }
                       });
                     }
-                  : () => setmessage('This feature has not been added yet')
+                  : () => {
+                      signupAction(form).then(data => {
+                        if (data.first_name) {
+                          setName(data.first_name);
+                          navigate('/login');
+                        } else {
+                          setmessage('Error');
+                        }
+                      });
+                    }
               }
             >
               {type === 'Login' ? 'Login' : 'Sign up'}

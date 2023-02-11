@@ -1,9 +1,9 @@
 import axios from 'axios';
-const BASEURL = 'https://treasurehunt.eu.pythonanywhere.com/treasurehunt/';
+const BASEURL = 'https://sustainabilityoncampus.eu.pythonanywhere.com/';
 
 export const loginAction = async data => {
   return await axios
-    .post(`${BASEURL}login/`, data, {
+    .post(`${BASEURL}auth/login/`, data, {
       auth: {
         username: 'admin',
         password: 'admin',
@@ -13,6 +13,20 @@ export const loginAction = async data => {
       return response.data;
     });
 };
+
+export const signupAction = async data => {
+  return await axios
+    .post(`${BASEURL}auth/signup`, data, {
+      auth: {
+        username: 'admin',
+        password: 'admin',
+      },
+    })
+    .then(response => {
+      return response.data;
+    });
+};
+
 export const getCode = async data => {
   return await axios
     .get(`${BASEURL}code/${data}`, {
@@ -49,4 +63,18 @@ export const setToken = data => {
 
 export const removeToken = () => {
   return localStorage.removeItem('token');
+};
+
+export const getName = () => {
+  const user = JSON.parse(localStorage.getItem('firstName'));
+  if (user) return user;
+  else return null;
+};
+// remove the token and user from the session storage
+export const removeName = () => {
+  return localStorage.removeItem('firstName');
+};
+// set the token and user from the session storage
+export const setName = data => {
+  return localStorage.setItem('firstName', JSON.stringify(data));
 };
