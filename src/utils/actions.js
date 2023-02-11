@@ -7,11 +7,12 @@ export const loginAction = async data => {
     password: data.password,
   };
 
+  const base64encodedData = btoa('sustainabilityoncampus:adminadmin');
+
   return await axios
     .post(`${BASEURL}auth/login/`, body, {
-      auth: {
-        password: 'sustainabilityoncampus',
-        username: 'adminadmin',
+      headers: {
+        Authorization: 'Basic ' + base64encodedData,
       },
     })
     .then(response => {
