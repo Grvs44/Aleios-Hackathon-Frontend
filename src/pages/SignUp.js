@@ -11,10 +11,13 @@ import {
   FormLabel,
   FormControl,
   Checkbox,
+  Image,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from '../elements/ColorModeSwitcher';
+import { ColorModeSwitcher } from '../elements/components/ColorModeSwitcher';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { setUser, loginAction, setToken, getUser } from '../utils/actions';
+import logo from '../elements/assets/favicon.ico';
+import 'transition-style';
 
 const Entry = ({ type }) => {
   // const [isLaptopSize] = useMediaQuery(['(min-width: 1023px)']);
@@ -22,7 +25,7 @@ const Entry = ({ type }) => {
   const user = getUser();
 
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '', fullName: '' });
   var validRegex = /^(?=^[^_]+_?[^_]+$)\w{3,20}$/;
 
   const validateForm = () => {
@@ -45,7 +48,7 @@ const Entry = ({ type }) => {
       <VStack h="100vh">
         <Flex p={[2, 4]} justify={'space-between'} w="full">
           <Button variant={'unstyled'} onClick={() => navigate('/')}>
-            Home
+            <Image src={logo} boxSize={10} />
           </Button>
           <ColorModeSwitcher />
         </Flex>
@@ -60,8 +63,23 @@ const Entry = ({ type }) => {
             <Heading pb={[0, 6]} fontSize={['2xl', '2xl', '4xl']}>
               {type === 'Login' ? '🚪' : '📬'} {type}
             </Heading>
+            {type === 'Sign-up' && (
+              <FormControl>
+                <FormLabel pl="1">Full Name:</FormLabel>
+                <Input
+                  value={form.fullName}
+                  type={'text'}
+                  rounded={'none'}
+                  maxW="300px"
+                  placeholder="John Doe"
+                  name="email"
+                  autoComplete={'false'}
+                  onChange={handleChange}
+                />
+              </FormControl>
+            )}
             <FormControl>
-              <FormLabel pl="1">Username:</FormLabel>
+              <FormLabel pl="1">Email:</FormLabel>
               <Input
                 value={form.email}
                 type={'text'}
@@ -95,7 +113,7 @@ const Entry = ({ type }) => {
                   opacity: 0.375,
                 }}
               >
-                <Text fontSize={['12px', '12px', '16px']}>Valid Username</Text>
+                <Text fontSize={['12px', '12px', '16px']}>Valid email</Text>
               </Checkbox>
               <Checkbox
                 isChecked={form.password.length >= 6 ? true : false}

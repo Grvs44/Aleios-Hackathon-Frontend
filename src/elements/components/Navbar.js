@@ -11,11 +11,13 @@ import {
   CloseButton,
   IconButton,
   chakra,
+  Image,
 } from '@chakra-ui/react';
+import logo from '../assets/favicon.ico';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { removeToken, removeUser } from '../utils/actions';
+import { removeToken, removeUser } from '../../utils/actions';
 const Navbar = () => {
   const navigate = useNavigate();
   const bg = useColorModeValue('white', 'gray.800');
@@ -40,7 +42,7 @@ const Navbar = () => {
               display="flex"
               alignItems="center"
             >
-              <Text>Home</Text>
+              <Image src={logo} boxSize={10} />
             </chakra.a>
           </Flex>
           <ColorModeSwitcher />
