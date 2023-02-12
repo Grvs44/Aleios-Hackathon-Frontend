@@ -1,15 +1,13 @@
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
 import Donate from '../pages/Donate';
 import Find from '../pages/FindDonations';
 import Home from '../pages/Home';
 import Scan from '../pages/Scan';
 import Entry from '../pages/SignUp';
-import { getUser } from '../utils/actions';
 
 const RoutesJs = () => {
-  const user = getUser();
   return (
     <Routes>
       <Route exact path="/" element={<Home />}></Route>

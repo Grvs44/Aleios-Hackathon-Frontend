@@ -1,32 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Heading,
-  VStack,
   Text,
-  HStack,
-  Textarea,
   Image,
-  FormControl,
   Badge,
-  Button,
-  Th,
-  Td,
   Center,
-  useToast,
-  Input,
   Box,
-  useColorModeValue,
-  Flex,
-  Stack,
-  InputGroup,
-  Select,
+  Button,
+  Textarea,
+  Input,
   Collapse,
+  useColorModeValue,
+  Stack,
 } from '@chakra-ui/react';
-import { FaFolderOpen, FaIdCard, FaPlus, FaTrash } from 'react-icons/fa';
 import Floppa from '../elements/assets/Floppa.jpeg';
-import { Navigate, redirect } from 'react-router-dom';
-import { getName, getUser } from '../utils/actions';
-import Menu from '../elements/components/Menu';
+import { Navigate } from 'react-router-dom';
+import { getUser } from '../utils/actions';
 import Navbar from '../elements/components/Navbar';
 function Donate() {
   // const [isPhone] = useMediaQuery('(max-width: 50em)');
@@ -49,7 +38,23 @@ function Donate() {
         {' '}
         <Navbar back />
         <Stack justify={'center'} align="center" h="100%">
-          <Heading>Donate</Heading>
+          <Button
+            size={'lg'}
+            onClick={() => {
+              setAccordion(!openAccordion);
+            }}
+            bg="brown"
+          >
+            Donate!
+          </Button>
+          <Collapse in={openAccordion} animateOpacity>
+            <Stack spacing="10px" px="5%">
+              <Input placeholder="Product" name="title" />
+              <Textarea placeholder="description" width="full" />
+
+              <Button colorScheme="telegram">Donate</Button>
+            </Stack>
+          </Collapse>
           <Center py={6}>
             <Box boxShadow={'lg'} rounded={'lg'} textAlign={'center'}>
               <Image
@@ -87,21 +92,6 @@ function Donate() {
               </Stack>
             </Box>
           </Center>
-          {/* <Button
-            onClick={() => {
-              setAccordion(!openAccordion);
-            }}
-          >
-            Open
-          </Button>
-          <Collapse in={openAccordion} animateOpacity>
-            <Stack spacing="10px" px="5%">
-              <Input placeholder="Product" name="title" />
-              <Textarea placeholder="description" width="full" />
-
-              <Button colorScheme="telegram">Donate</Button>
-            </Stack>
-          </Collapse> */}
         </Stack>
       </Box>
     </Box>

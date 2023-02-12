@@ -1,6 +1,5 @@
 import {
   Heading,
-  Avatar,
   Box,
   Center,
   Text,

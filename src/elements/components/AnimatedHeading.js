@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Box, useMediaQuery, useColorModeValue } from '@chakra-ui/react';
+import { Box, useMediaQuery } from '@chakra-ui/react';
 // Word wrapper
 const Wrapper = props => {
   // We'll do this to prevent wrapping of words using CSS
@@ -196,7 +196,7 @@ const AnimatedCharacters = props => {
 export default function AnimatedHeading() {
   const [replay, setReplay] = useState(true);
   // Placeholder text data, as if from API
-  const placeholderText = [{ type: 'heading1', text: 'Sensational Future' }];
+  const placeholderText = [{ type: 'heading1', text: 'Sustainable Future' }];
 
   const container = {
     visible: {

@@ -1,28 +1,10 @@
 import React from 'react';
-import {
-  VStack,
-  Text,
-  Flex,
-  Box,
-  useColorModeValue,
-  useDisclosure,
-  HStack,
-  Button,
-  CloseButton,
-  IconButton,
-  chakra,
-  Image,
-} from '@chakra-ui/react';
+import { Flex, useColorModeValue, chakra, Image } from '@chakra-ui/react';
 import logo from '../assets/favicon.ico';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { removeToken, removeUser } from '../../utils/actions';
 import { BackButton } from './BackButton';
 const Navbar = ({ back }) => {
-  const navigate = useNavigate();
   const bg = useColorModeValue('white', 'gray.800');
-  const mobileNav = useDisclosure();
   return (
     <React.Fragment>
       <chakra.header
