@@ -57,6 +57,7 @@ function Donate() {
               <Button colorScheme="telegram">Donate</Button>
             </Stack>
           </Collapse>
+
           <Center py={6}>
             <Box boxShadow={'lg'} rounded={'lg'} textAlign={'center'}>
               <Image
