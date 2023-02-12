@@ -30,7 +30,7 @@ export const signupAction = async data => {
     last_name: data.fullName.split(' ')[1],
   };
   return await axios
-    .post(`${BASEURL}auth/signup/`, body)
+    .post(`${BASEURL}user/`, body)
     .then(response => {
       console.log(response);
       return response.data;
