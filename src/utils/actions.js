@@ -2,17 +2,11 @@ import axios from 'axios';
 const BASEURL = 'https://sustainabilityoncampus.eu.pythonanywhere.com/';
 
 export const loginAction = async data => {
-  const body = {
-    username: data.email,
-    password: data.password,
-  };
-
-  const base64encodedData = btoa(`${data.email}:${data.password}`);
-
   return await axios
-    .post(`${BASEURL}auth/login/`, body, {
-      headers: {
-        Authorization: 'Basic ' + base64encodedData,
+    .post(`${BASEURL}auth/login/`, null, {
+      auth: {
+        username: data.email,
+        password: data.password,
       },
     })
     .then(response => {
