@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { VStack, Text, Box, useMediaQuery, Stack } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../elements/Navbar';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { getUser } from '../utils/actions';
-import BarcodeScannerComponent from 'react-qr-barcode-scanner';
+import BarcodeReader from 'react-barcode-reader';
 
 function Scan() {
-  const [isPhone] = useMediaQuery('(max-width: 50em)');
+  const [data, setData] = React.useState('Not Found');
   let navigate = useNavigate();
   const user = getUser();
-  if (!user) navigate('/login');
-  const [data, setData] = React.useState('Not Found');
+  if (!user) {
+    return <Navigate to={'/login'} />;
+  }
 
   return (
     <Box>
       <VStack h="100vh">
-        <Navbar />
         <Stack h={'full'} w=" full" pt="8%">
           <Text textAlign={'center'}>Scan your barcode </Text>
           <Stack align={'center'} spacing="16">
             <Box textAlign={'center'} boxSize="80">
-              <BarcodeScannerComponent
-                width={500}
-                height={500}
-                onUpdate={(err, result) => {
-                  if (result) setData(result.text);
-                  else setData('Not Found');
-                }}
-              />
+              <BarcodeReader on />
               <p>{data}</p>
             </Box>
           </Stack>

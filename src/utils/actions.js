@@ -7,7 +7,7 @@ export const loginAction = async data => {
     password: data.password,
   };
 
-  const base64encodedData = btoa('sustainabilityoncampus:adminadmin');
+  const base64encodedData = btoa(`${data.email}:${data.password}`);
 
   return await axios
     .post(`${BASEURL}auth/login/`, body, {
@@ -16,6 +16,7 @@ export const loginAction = async data => {
       },
     })
     .then(response => {
+      console.log(response.data);
       return response.data;
     });
 };
@@ -26,8 +27,8 @@ export const signupAction = async data => {
     username: data.email,
     password: data.password,
     first_name: first.substring(0, 1).toUpperCase() + first.substring(1),
+    last_name: data.fullName.split(' ')[1],
   };
-  console.log(body);
   return await axios
     .post(`${BASEURL}auth/signup/`, body)
     .then(response => {
@@ -87,4 +88,18 @@ export const removeName = () => {
 // set the token and user from the session storage
 export const setName = data => {
   return localStorage.setItem('firstName', JSON.stringify(data));
+};
+
+export const getId = () => {
+  const user = JSON.parse(localStorage.getItem('userId'));
+  if (user) return user;
+  else return null;
+};
+// remove the token and user from the session storage
+export const removeId = () => {
+  return localStorage.removeItem('userId');
+};
+// set the token and user from the session storage
+export const setId = data => {
+  return localStorage.setItem('userId', JSON.stringify(data));
 };

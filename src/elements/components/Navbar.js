@@ -18,7 +18,8 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { removeToken, removeUser } from '../../utils/actions';
-const Navbar = () => {
+import { BackButton } from './BackButton';
+const Navbar = ({ back }) => {
   const navigate = useNavigate();
   const bg = useColorModeValue('white', 'gray.800');
   const mobileNav = useDisclosure();
@@ -33,20 +34,26 @@ const Navbar = () => {
         }}
         py={4}
         shadow="md"
+        pos={'fixed'}
+        zIndex="popover"
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <Flex>
-            <chakra.a
-              href="/"
-              title="Choc Home Page"
-              display="flex"
-              alignItems="center"
-            >
-              <Image src={logo} boxSize={10} />
-            </chakra.a>
+            {back ? (
+              <BackButton />
+            ) : (
+              <chakra.a
+                href="/"
+                title="Choc Home Page"
+                display="flex"
+                alignItems="center"
+              >
+                <Image src={logo} boxSize={10} />
+              </chakra.a>
+            )}
           </Flex>
           <ColorModeSwitcher />
-          <HStack display="flex" alignItems="center" spacing={1}>
+          {/* <HStack display="flex" alignItems="center" spacing={1}>
             <HStack
               spacing={1}
               mr={1}
@@ -62,18 +69,7 @@ const Navbar = () => {
               <Button variant="ghost" onClick={() => console.log('Testing')}>
                 Testing
               </Button>
-              {/* <Button
-                variant="ghost"
-                onClick={() => navigate('/dashboard/help')}
-              >
-                Help
-              </Button> */}
-              {/* <Button
-                variant="ghost"
-                onClick={() => navigate('/dashboard/map')}
-              >
-                Map
-              </Button> */}
+             
               <Button
                 onClick={() => {
                   removeUser();
@@ -156,7 +152,7 @@ const Navbar = () => {
                 </Button>
               </VStack>
             </Box>
-          </HStack>
+          </HStack> */}
         </Flex>
       </chakra.header>
     </React.Fragment>

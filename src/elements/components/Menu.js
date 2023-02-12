@@ -17,6 +17,10 @@ const Menu = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         borderRadius="md"
+        bgGradient="linear(to-r, brand.2, brand.1)"
+        _hover={{
+          bgGradient: 'linear(to-r, red.500, yellow.500)',
+        }}
         _focus={{
           bg: 'transparent',
           bgGradient: 'linear(to-r, brand.2, brand.1)',
@@ -29,8 +33,8 @@ const Menu = () => {
           opacity: 1,
           scale: 1,
         }}
-        transition="0.3s ease-out "
-        onClick={() => navigate('/canvas/')}
+        transition="0.6s ease-out "
+        onClick={() => navigate('/find-donations/')}
       >
         Find Donations
       </Button>
@@ -60,10 +64,10 @@ const Menu = () => {
           scale: 1,
         }}
         transition="0.6s ease-out "
-        onClick={() => navigate('/hi-scores/')}
+        onClick={() => navigate('/donate')}
       >
         Donate
-      </Button>{' '}
+      </Button>
       <Button
         as={motion.button}
         alignItems="center"
@@ -90,7 +94,7 @@ const Menu = () => {
           scale: 1,
         }}
         transition="0.9s ease-out "
-        onClick={() => navigate('/options/')}
+        onClick={() => navigate('/scan/')}
       >
         Scan
       </Button>{' '}

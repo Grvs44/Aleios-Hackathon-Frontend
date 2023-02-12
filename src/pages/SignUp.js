@@ -22,6 +22,7 @@ import {
   setToken,
   getUser,
   setName,
+  setId,
 } from '../utils/actions';
 import logo from '../elements/assets/favicon.ico';
 
@@ -159,6 +160,7 @@ const Entry = ({ type }) => {
                         if (data.token) {
                           setToken(data.token);
                           setName(data.first_name);
+                          setId(data.user);
                           setUser(form.email);
                           navigate('/dashboard');
                         } else {
