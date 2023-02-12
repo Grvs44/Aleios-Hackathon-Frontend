@@ -17,6 +17,8 @@ import Floppa from '../elements/assets/Floppa.jpeg';
 import { Navigate } from 'react-router-dom';
 import { getUser } from '../utils/actions';
 import Navbar from '../elements/components/Navbar';
+import Boots from '../elements/assets/boots.jpeg';
+
 function Donate() {
   // const [isPhone] = useMediaQuery('(max-width: 50em)');
   const [openAccordion, setAccordion] = useState(false);
@@ -58,7 +60,7 @@ function Donate() {
           <Center py={6}>
             <Box boxShadow={'lg'} rounded={'lg'} textAlign={'center'}>
               <Image
-                src={Floppa}
+                src={Boots}
                 alt={`Picture of floppa`}
                 boxSize={40}
                 roundedTop="lg"
@@ -69,7 +71,7 @@ function Donate() {
               <Stack p={6} spacing={4}>
                 <Heading fontFamily={'body'}>Product</Heading>
                 <Text textAlign={'center'} px={3}>
-                  Gettiing new boots. I want to donate the old ones
+                  Gettiing new boots. I want to donate my old ones
                 </Text>
                 <Stack
                   align={'center'}
@@ -78,7 +80,10 @@ function Donate() {
                   mt={6}
                 >
                   <Badge px={2} py={1} fontWeight={'400'}>
-                    #tag
+                    #Items
+                  </Badge>
+                  <Badge px={2} py={1} fontWeight={'400'}>
+                    #Boots
                   </Badge>
                 </Stack>
                 <Text fontSize={'md'} textAlign={'center'} px={3}>
@@ -86,8 +91,7 @@ function Donate() {
                 </Text>
                 <ul style={{ listStyle: 'none' }}>
                   <li>Admin1 : admin1@yahoo.com</li>
-                  <li>Admin2 : admin2@yahoo.com</li>
-                  <li>Admin3 : admin3@yahoo.com</li>
+                  <li>Test1 : Test1@yahoo.com</li>
                 </ul>
               </Stack>
             </Box>
